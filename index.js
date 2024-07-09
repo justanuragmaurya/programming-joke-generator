@@ -3,11 +3,15 @@ import axios from "axios";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from 'url';
+import dotenv from "dotenv";
 
+dotenv.config();
 
 const app = express();
 let jokee;
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url)); // Create __dirname equivalent
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
